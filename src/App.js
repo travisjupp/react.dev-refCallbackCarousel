@@ -5,20 +5,10 @@ export default function CatFriends() {
   const catRefsMap = useRef(null);
   if (!catRefsMap.current) {
     catRefsMap.current = new Map();
-    // console.log("new Map created");
   } else {
-    // console.log("catRefsMap.current", catRefsMap.current);
   }
   function handleScrollToCat(index) {
     const node = catRefsMap.current.get(catList[index]);
-    console.log(
-      "index",
-      index,
-      "\ncatList[index]",
-      catList[index],
-      "\nnode",
-      node
-    );
     node.scrollIntoView({
       container: "nearest",
       behavior: "smooth",
@@ -52,14 +42,9 @@ export default function CatFriends() {
           onClick={() => {
             if (index < catList.length - 1) {
               setIndex(index + 1);
-              console.log("calling scroll to view index: ", index + 1);
               handleScrollToCat(index + 1);
             } else {
               setIndex(0);
-              console.log(
-                "calling scroll to view index(index < catList.length -1: ",
-                index
-              );
               handleScrollToCat(0);
             }
           }}
@@ -96,4 +81,3 @@ for (let i = 0; i < catCount; i++) {
     imageUrl,
   };
 }
-// console.log("catList", catList);
